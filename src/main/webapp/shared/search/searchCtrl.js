@@ -3,10 +3,6 @@ var searchEngineControllers = angular.module('searchEngineControllers');
 searchEngineControllers.controller('searchCtrl', ['$scope','$filter','$rootScope','SearchService',
     function ($scope,$filter,$rootScope,SearchService) {
 
-        $scope.msg = "asd";
-
-        $scope.pdf = SearchService.pdf();
-
         $scope.getPDF = function() {
             var service = new SearchService();
                             service.$pdf({},function(successResponse) {
@@ -17,6 +13,18 @@ searchEngineControllers.controller('searchCtrl', ['$scope','$filter','$rootScope
                                 console.log(error);
                             })
         }
+
+
+        $scope.getDOCX = function() {
+                    var service = new SearchService();
+                                    service.$docx({},function(successResponse) {
+                                            console.log(successResponse);
+                                        },
+                                    function(error) {
+                                        console.log(error);
+                                    })
+                }
+
 
 
     }]);
